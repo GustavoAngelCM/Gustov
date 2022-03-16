@@ -33,9 +33,10 @@ const Report: NextPage = () => {
         <h4 className={'font-medium text-2xl select-none'}>
           <span className={'hover:text-orange-600 cursor-pointer underline decoration-orange-600'} onClick={toHome}>{'Restaurant GUSTOV '}</span>
           <span>{'"REPORTES"'}</span>
+          <div className={'font-extrabold text-3xl text-red-700'}>{`Bs.- ${total}`} <span className={'font-bold text-lg text-green-700'}>{`${ventas.length} ventas realizadas.`}</span></div>
         </h4>
         <hr className={'m-2'} />
-        <div className={'flex justify-around select-none'}>
+        <div className={'flex justify-around select-none h-96 overflow-y-scroll '}>
           <ul className={'lg:w-6/12 md:w-6/12 xs:w-full'}>
             {ventas.map((venta: any) => (
               <li key={venta.id} className={'p-1 border-slate-600 border-2 rounded-md my-2 flex justify-between hover:bg-slate-200'}>
@@ -44,7 +45,6 @@ const Report: NextPage = () => {
               </li>
             ))}
           </ul>
-          <div className={'font-extrabold text-2xl text-red-700'}>{total}</div>
         </div>
       </div>
     </div>

@@ -9,6 +9,8 @@ import { createContext, useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { UPDATE_MENU } from '../graphql/mutations'
+import { format } from 'date-fns'
+import es from 'date-fns/locale/es'
 
 interface Dish_Sale {
   "dish": string,
@@ -136,7 +138,7 @@ const Sale: NextPage = () => {
                 ( <Image src={Loading} width={50} alt={'cargando...'} /> )
                 :
                 (
-                  data.getMenus.map((menu: any) => <div key={menu.id} className={'p-3 m-3 border-2 border-red-800 cursor-pointer'} onClick={() => setDishes(menu.dishes, menu.id)}>{menu.date_menu}</div>)
+                  data.getMenus.map((menu: any) => <div key={menu.id} className={'p-3 m-3 border-2 border-red-800 cursor-pointer'} onClick={() => setDishes(menu.dishes, menu.id)}>{format(new Date(menu.date_menu), 'dd MMMM yyyy', {locale: es}) }</div>)
                 )
             }
           </div>
